@@ -1,0 +1,56 @@
+package src;
+%%
+%{
+	private void imprimir(String descricao, String lexema){
+
+		System.out.println(lexema + "-" + descricao);
+	}
+%}
+%class AnalisadorLexico
+%type void
+BRANCO = [\n||\t|\r]
+ID = [_|a-z|A-Z][a-z|A-Z|0-9_]*
+SOMA = "+"
+SUBTRAI = "-"
+MULTI = "*"
+DIVID = "/"
+NATURAL = 0|[1-9][0-9]*
+
+
+
+%%
+
+
+"iniciaSE"		{imprimir("Palavra reservada", yytext());}
+"concluiSE"		{imprimir("Palavra reservada", yytext());}
+"finalizaSE"	{imprimir("Palavra reservada", yytext());}
+"roff" 			{imprimir("Palavra reservada", yytext());}
+"tilt"			{imprimir("Palavra reservada", yytext());}
+"breka"			{imprimir("Palavra reservada", yytext());}
+"case_mod"		{imprimir("Palavra reservada", yytext());}
+"contis"		{imprimir("Palavra reservada", yytext());}
+"def_mod"		{imprimir("Palavra reservada", yytext());}
+"doit"			{imprimir("Palavra reservada", yytext());}
+"lihwe"			{imprimir("Palavra reservada", yytext());}
+"abs"			{imprimir("Palavra reservada", yytext());}
+"ex"			{imprimir("Palavra reservada", yytext());}
+"imp_mod"		{imprimir("Palavra reservada", yytext());}
+"intf"			{imprimir("Palavra reservada", yytext());}
+"wen"			{imprimir("Palavra reservada", yytext());}
+"stc"			{imprimir("Palavra reservada", yytext());}
+"bool"			{imprimir("Palavra reservada", yytext());}
+"teby"			{imprimir("Palavra reservada", yytext());}
+"rach"			{imprimir("Palavra reservada", yytext());}
+"dble"			{imprimir("Palavra reservada", yytext());}
+"flow"			{imprimir("Palavra reservada", yytext());}
+"tin"			{imprimir("Palavra reservada", yytext());}
+"goln"			{imprimir("Palavra reservada", yytext());}
+"sht"			{imprimir("Palavra reservada", yytext());}
+{BRANCO}		{imprimir("Espaço em branco ", yytext());}
+{ID}			{imprimir("Identificador ", yytext());}
+{SOMA}			{imprimir("Operador de soma ", yytext());}
+{SUBTRAI}		{imprimir("Operador de subtração", yytext());}
+{MULTI}			{imprimir("Operador de multiplicação", yytext());}
+{DIVID}			{imprimir("Operador de divisão", yytext());}
+{NATURAL}		{imprimir("Numero Natural ", yytext());}
+. { throw new RuntimeException("Caractere invalido" + yytext()); }

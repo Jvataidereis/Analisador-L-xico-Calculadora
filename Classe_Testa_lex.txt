@@ -1,0 +1,11 @@
+package src;
+import java.io.IOException;
+import java.io.StringReader;
+public class TestaLex {
+	public static void main(String[] args) throws IOException{
+		String expr = "iniciaSE (i=0; i<=10; i++)"
+						+ "finalizaSE 10 + 3+a*10/2-22 concluiSE";
+		AnalisadorLexico lexical = new AnalisadorLexico(new StringReader(expr));
+		lexical.yylex();
+	}
+}
